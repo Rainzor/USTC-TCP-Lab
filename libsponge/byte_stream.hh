@@ -7,19 +7,26 @@
 #include <list>
 #include <string>
 #include <utility>
+#include "util/buffer.hh"
 
 //! \brief An in-order byte stream.
 
 //! Bytes are written on the "input" side and read from the "output"
 //! side.  The byte stream is finite: the writer can end the input,
 //! and then no more bytes can be written.
-class ByteStream {
-  private:
+class ByteStream
+{
+private:
     // Your code here -- add private members as necessary.
 
-    bool _error{};  //!< Flag indicating that the stream suffered an error.
+    BufferList _buffer = {};        // dequeue
+    size_t _capacity{};             // 最大容量
+    size_t _write_count{};          // 写入的字节数
+    size_t _read_count{};           // 读取的字节数
+    bool _input_ended_flag = false; // 输入结束标志
+    bool _error = false;            //!< Flag indicating that the stream suffered an error.
 
-  public:
+public:
     //! Construct a stream with room for `capacity` bytes.
     ByteStream(const size_t capacity);
 
@@ -48,16 +55,17 @@ class ByteStream {
     //! \returns a string
     std::string peek_output(const size_t len) const;
 
+    // void print() const
+    // {
+    //     _buffer.print();
+    // };
+
     //! Remove bytes from the buffer
     void pop_output(const size_t len);
 
     //! Read (i.e., copy and then pop) the next "len" bytes of the stream
     //! \returns a vector of bytes read
-    std::string read(const size_t len) {
-        const auto ret = peek_output(len);
-        pop_output(len);
-        return ret;
-    }
+    std::string read(const size_t len);
 
     //! \returns `true` if the stream input has ended
     bool input_ended() const;
@@ -86,4 +94,4 @@ class ByteStream {
     //!@}
 };
 
-#endif  // SPONGE_LIBSPONGE_BYTE_STREAM_HH
+#endif // SPONGE_LIBSPONGE_BYTE_STREAM_HH

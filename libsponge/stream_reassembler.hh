@@ -5,17 +5,33 @@
 
 #include <cstdint>
 #include <string>
+#include <map>
+#include <algorithm>
+#include <string>
+#include <vector>
+using std::string;
 
 //! \brief A class that assembles a series of excerpts from a byte stream (possibly out of order,
 //! possibly overlapping) into an in-order byte stream.
-class StreamReassembler {
-  private:
+class StreamReassembler
+{
+private:
     // Your code here -- add private members as necessary.
 
-    ByteStream _output;  //!< The reassembled in-order byte stream
-    size_t _capacity;    //!< The maximum number of bytes
+    // map 具有自动排序的性质，很容易用来存储乱序的字符流
+    std::map<size_t, std::string> _window{};
+    size_t _unass_base = 0; // unassembled base string index
+    size_t _unass_size = 0; // the size that have not been reassembled but in the windows
+    ByteStream _output;     //!< The reassembled in-order byte stream
+    size_t _capacity;       //!< The maximum number of bytes
+    bool _eof = false;      // end of file
+    size_t _eof_idx = 0;    // end of file index
 
-  public:
+    void reassemble_stream();
+
+    void insert_merge(const size_t &index, const string &data);
+
+public:
     //! \brief Construct a `StreamReassembler` that will store up to `capacity` bytes.
     //! \note This capacity limits both the bytes that have been reassembled,
     //! and those that have not yet been reassembled.
@@ -50,4 +66,4 @@ class StreamReassembler {
     bool empty() const;
 };
 
-#endif  // SPONGE_LIBSPONGE_STREAM_REASSEMBLER_HH
+#endif // SPONGE_LIBSPONGE_STREAM_REASSEMBLER_HH
