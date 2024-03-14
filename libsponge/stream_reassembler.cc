@@ -32,29 +32,27 @@ void StreamReassembler::insert_merge(const size_t &index, const string &data)
     {
         size_t it_end = it->first + it->second.length();
 
-        if (it_end <= index)
+        if (it_end <= begin)
             continue;
 
-        if (it->first <= index && it_end >= end)
+        if (it->first <= begin && it_end >= end)
         {
             return;
         }
 
-        if ((it->first >= index && it_end < end) || (it->first > index && it_end <= end))
+        if ((it->first >= begin && it_end < end) || (it->first > begin && it_end <= end))
         {
             it_destory_vec.push_back(it);
         }
-
-        if (it->first < index && it_end > index && it_end < end)
+        else if (it->first < begin && it_end > begin && it_end < end)
         {
-            merge_data = it->second.substr(0, it_end - index) + merge_data;
+            merge_data = it->second.substr(0, begin - it->first) + merge_data;
             begin = it->first;
             it_destory_vec.push_back(it);
         }
-
-        if (it->first > index && it->first < end && it_end > end)
+        else if (it->first > begin && it->first < end && it_end > end)
         {
-            merge_data = merge_data.substr(0, it->first - index) + it->second;
+            merge_data = merge_data.substr(0, it->first - begin) + it->second;
             it_destory_vec.push_back(it);
             break;
         }
@@ -72,18 +70,13 @@ void StreamReassembler::insert_merge(const size_t &index, const string &data)
 void StreamReassembler::reassemble_stream()
 {
     auto it = _window.begin();
-
-    while (it != _window.end() && it->first == _unass_base)
+    while (!_window.empty() && it != _window.end() && it->first == _unass_base)
     {
-        // size_t offset = _unass_base - it->first;
-        // size_t writed_len = it->second.length() - offset;
-        // _output.write(it->second.substr(offset, writed_len));
         size_t writed_len = _output.write(it->second);
         _unass_base += writed_len;
         _unass_size -= writed_len;
         it = _window.erase(it);
     }
-    _window.erase(_window.begin(), it);
 }
 
 //! \details This function accepts a substring (aka a segment) of bytes,
@@ -107,17 +100,13 @@ void StreamReassembler::push_substring(const string &data, const size_t index, c
         size_t buf_offset = index - _unass_base;
         // 待写入的数据不能超过窗口范围
         size_t real_len = min(len, _output.remaining_capacity() - buf_offset);
-        if (real_len < len)
-            _eof = false;
         insert_merge(index, data.substr(0, real_len));
     }
     else if (index + len > _unass_base)
-    { // index <= _unass_base
+    { // index < _unass_base
         size_t str_offset = _unass_base - index;
         // 待写入的数据不能超过窗口范围
         size_t real_len = min(len - str_offset, _output.remaining_capacity());
-        if (real_len < len - str_offset)
-            _eof = false;
         insert_merge(_unass_base, data.substr(str_offset, real_len));
     } // else index+len <= _unass_base
     reassemble_stream();
@@ -128,5 +117,7 @@ void StreamReassembler::push_substring(const string &data, const size_t index, c
 }
 
 size_t StreamReassembler::unassembled_bytes() const { return _unass_size; }
+
+size_t StreamReassembler::assembled_bytes() const { return _unass_base; }
 
 bool StreamReassembler::empty() const { return _unass_size == 0; }
