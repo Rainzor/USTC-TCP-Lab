@@ -1,0 +1,128 @@
+[
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/byte_stream.cc.o -c /home/runze/Programs/expProject102-953/libsponge/byte_stream.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/byte_stream.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/byte_stream.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/address.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/address.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/address.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/address.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/buffer.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/buffer.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/buffer.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/buffer.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/eventloop.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/eventloop.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/eventloop.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/eventloop.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/file_descriptor.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/file_descriptor.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/file_descriptor.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/file_descriptor.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/parser.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/parser.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/parser.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/parser.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/socket.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/socket.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/socket.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/socket.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/tun.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/tun.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/tun.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/tun.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/libsponge",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/sponge.dir/util/util.cc.o -c /home/runze/Programs/expProject102-953/libsponge/util/util.cc",
+  "file": "/home/runze/Programs/expProject102-953/libsponge/util/util.cc",
+  "output": "libsponge/CMakeFiles/sponge.dir/util/util.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/apps",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/webget.dir/webget.cc.o -c /home/runze/Programs/expProject102-953/apps/webget.cc",
+  "file": "/home/runze/Programs/expProject102-953/apps/webget.cc",
+  "output": "apps/CMakeFiles/webget.dir/webget.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/apps",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/tcp.dir/tcp.cc.o -c /home/runze/Programs/expProject102-953/apps/tcp.cc",
+  "file": "/home/runze/Programs/expProject102-953/apps/tcp.cc",
+  "output": "apps/CMakeFiles/tcp.dir/tcp.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/apps",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/buftest.dir/buftest.cc.o -c /home/runze/Programs/expProject102-953/apps/buftest.cc",
+  "file": "/home/runze/Programs/expProject102-953/apps/buftest.cc",
+  "output": "apps/CMakeFiles/buftest.dir/buftest.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/tests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/spongechecks.dir/byte_stream_test_harness.cc.o -c /home/runze/Programs/expProject102-953/tests/byte_stream_test_harness.cc",
+  "file": "/home/runze/Programs/expProject102-953/tests/byte_stream_test_harness.cc",
+  "output": "tests/CMakeFiles/spongechecks.dir/byte_stream_test_harness.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/tests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/byte_stream_construction.dir/byte_stream_construction.cc.o -c /home/runze/Programs/expProject102-953/tests/byte_stream_construction.cc",
+  "file": "/home/runze/Programs/expProject102-953/tests/byte_stream_construction.cc",
+  "output": "tests/CMakeFiles/byte_stream_construction.dir/byte_stream_construction.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/tests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/byte_stream_one_write.dir/byte_stream_one_write.cc.o -c /home/runze/Programs/expProject102-953/tests/byte_stream_one_write.cc",
+  "file": "/home/runze/Programs/expProject102-953/tests/byte_stream_one_write.cc",
+  "output": "tests/CMakeFiles/byte_stream_one_write.dir/byte_stream_one_write.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/tests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/byte_stream_two_writes.dir/byte_stream_two_writes.cc.o -c /home/runze/Programs/expProject102-953/tests/byte_stream_two_writes.cc",
+  "file": "/home/runze/Programs/expProject102-953/tests/byte_stream_two_writes.cc",
+  "output": "tests/CMakeFiles/byte_stream_two_writes.dir/byte_stream_two_writes.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/tests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/byte_stream_capacity.dir/byte_stream_capacity.cc.o -c /home/runze/Programs/expProject102-953/tests/byte_stream_capacity.cc",
+  "file": "/home/runze/Programs/expProject102-953/tests/byte_stream_capacity.cc",
+  "output": "tests/CMakeFiles/byte_stream_capacity.dir/byte_stream_capacity.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/tests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/byte_stream_many_writes.dir/byte_stream_many_writes.cc.o -c /home/runze/Programs/expProject102-953/tests/byte_stream_many_writes.cc",
+  "file": "/home/runze/Programs/expProject102-953/tests/byte_stream_many_writes.cc",
+  "output": "tests/CMakeFiles/byte_stream_many_writes.dir/byte_stream_many_writes.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/doctests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/address_dt.dir/address_dt.cc.o -c /home/runze/Programs/expProject102-953/doctests/address_dt.cc",
+  "file": "/home/runze/Programs/expProject102-953/doctests/address_dt.cc",
+  "output": "doctests/CMakeFiles/address_dt.dir/address_dt.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/doctests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/parser_dt.dir/parser_dt.cc.o -c /home/runze/Programs/expProject102-953/doctests/parser_dt.cc",
+  "file": "/home/runze/Programs/expProject102-953/doctests/parser_dt.cc",
+  "output": "doctests/CMakeFiles/parser_dt.dir/parser_dt.cc.o"
+},
+{
+  "directory": "/home/runze/Programs/expProject102-953/build/doctests",
+  "command": "/usr/bin/c++  -I/home/runze/Programs/expProject102-953/libsponge/util -I/home/runze/Programs/expProject102-953/libsponge/tcp_helpers -I/home/runze/Programs/expProject102-953/libsponge  -std=c++17 -g -pedantic -pedantic-errors -Werror -Wall -Wextra -Wshadow -Wpointer-arith -Wcast-qual -Wformat=2 -Weffc++ -Wold-style-cast -g -ggdb3 -O0 -std=gnu++17 -o CMakeFiles/socket_dt.dir/socket_dt.cc.o -c /home/runze/Programs/expProject102-953/doctests/socket_dt.cc",
+  "file": "/home/runze/Programs/expProject102-953/doctests/socket_dt.cc",
+  "output": "doctests/CMakeFiles/socket_dt.dir/socket_dt.cc.o"
+}
+]
