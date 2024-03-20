@@ -6,15 +6,16 @@
 
 //! \brief A 32-bit integer, expressed relative to an arbitrary initial sequence number (ISN)
 //! \note This is used to express TCP sequence numbers (seqno) and acknowledgment numbers (ackno)
-class WrappingInt32 {
-  private:
-    uint32_t _raw_value;  //!< The raw 32-bit stored integer
+class WrappingInt32
+{
+private:
+    uint32_t _raw_value; //!< The raw 32-bit stored integer
 
-  public:
+public:
     //! Construct from a raw 32-bit unsigned integer
     explicit WrappingInt32(uint32_t raw_value) : _raw_value(raw_value) {}
-    WrappingInt32(): _raw_value(0) {}
-    uint32_t raw_value() const { return _raw_value; }  //!< Access raw stored value
+    WrappingInt32() : _raw_value(0) {}
+    uint32_t raw_value() const { return _raw_value; } //!< Access raw stored value
 };
 
 //! Transform a 64-bit absolute sequence number (zero-indexed) into a 32-bit relative sequence number
@@ -62,4 +63,4 @@ inline WrappingInt32 operator+(WrappingInt32 a, uint32_t b) { return WrappingInt
 inline WrappingInt32 operator-(WrappingInt32 a, uint32_t b) { return a + -b; }
 //!@}
 
-#endif  // SPONGE_LIBSPONGE_WRAPPING_INTEGERS_HH
+#endif // SPONGE_LIBSPONGE_WRAPPING_INTEGERS_HH

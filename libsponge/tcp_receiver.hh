@@ -13,11 +13,12 @@
 //! Receives and reassembles segments into a ByteStream, and computes
 //! the acknowledgment number and window size to advertise back to the
 //! remote TCPSender.
-class TCPReceiver {
-    
-  private:
+class TCPReceiver
+{
 
-    enum State {
+private:
+    enum State
+    {
         LISTEN,
         SYN_RECV,
         FIN_RECV,
@@ -38,7 +39,8 @@ public:
     //!
     //! \param capacity the maximum number of bytes that the receiver will
     //!                 store in its buffers at any give time.
-    TCPReceiver(const size_t capacity) : _reassembler(capacity), _capacity(capacity) {
+    TCPReceiver(const size_t capacity) : _reassembler(capacity), _capacity(capacity)
+    {
     }
 
     //! \name Accessors to provide feedback to the remote TCPSender
@@ -78,4 +80,4 @@ public:
     //!@}
 };
 
-#endif  // SPONGE_LIBSPONGE_TCP_RECEIVER_HH
+#endif // SPONGE_LIBSPONGE_TCP_RECEIVER_HH
