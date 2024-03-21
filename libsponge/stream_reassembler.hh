@@ -63,6 +63,8 @@ public:
 
     size_t assembled_bytes() const;
 
+    size_t windows_size() const;
+
     //! \brief Is the internal state empty (other than the output stream)?
     //! \returns `true` if no substrings are waiting to be assembled
     bool empty() const;
