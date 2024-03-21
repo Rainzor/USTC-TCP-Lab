@@ -5,119 +5,108 @@
 // For Lab 1, please replace with a real implementation that passes the
 // automated checks run by `make check_lab1`.
 
-// You will need to add private members to the class declaration in `stream_reassembler.hh`
+// You will need to add private members to the class declaration in
+// `stream_reassembler.hh`
 
-template <typename... Targs>
-void DUMMY_CODE(Targs &&.../* unused */) {}
+template <typename... Targs> void DUMMY_CODE(Targs &&.../* unused */) {}
 
 using namespace std;
 
-StreamReassembler::StreamReassembler(const size_t capacity) : _unass_base(0), _unass_size(0),
-                                                              _output(capacity), _capacity(capacity),
-                                                              _eof(false), _eof_idx(0) {}
+StreamReassembler::StreamReassembler(const size_t capacity)
+    : _unass_base(0), _unass_size(0), _output(capacity), _capacity(capacity),
+      _eof(false), _eof_idx(0) {}
 
 // 新插入的数据可能会与原有的数据重叠，要将数据进行合并
 // 其中输入的index, data.len 都是合法的，在剩余窗口范围内
-void StreamReassembler::insert_merge(const size_t &index, const string &data)
-{
-    size_t len = data.length();
-    if (len == 0)
-        return;
-    size_t begin = index;
-    size_t end = index + len;
-    string merge_data = data;
+void StreamReassembler::insert_merge(const size_t &index, const string &data) {
+  size_t len = data.length();
+  if (len == 0)
+    return;
+  size_t begin = index;
+  size_t end = index + len;
+  string merge_data = data;
 
-    std::vector<std::map<size_t, std::string>::iterator> it_destory_vec{};
-    for (auto it = _window.begin(); it != _window.end(); it++)
-    {
-        size_t it_end = it->first + it->second.length();
+  std::vector<std::map<size_t, std::string>::iterator> it_destory_vec{};
+  for (auto it = _window.begin(); it != _window.end(); it++) {
+    size_t it_end = it->first + it->second.length();
 
-        if (it_end <= begin)
-            continue;
+    if (it_end <= begin)
+      continue;
 
-        if (it->first <= begin && it_end >= end)
-        {
-            return;
-        }
-
-        if ((it->first >= begin && it_end < end) || (it->first > begin && it_end <= end))
-        {
-            it_destory_vec.push_back(it);
-        }
-        else if (it->first < begin && it_end > begin && it_end < end)
-        {
-            merge_data = it->second.substr(0, begin - it->first) + merge_data;
-            begin = it->first;
-            it_destory_vec.push_back(it);
-        }
-        else if (it->first > begin && it->first < end && it_end > end)
-        {
-            merge_data = merge_data.substr(0, it->first - begin) + it->second;
-            it_destory_vec.push_back(it);
-            break;
-        }
+    if (it->first <= begin && it_end >= end) {
+      return;
     }
-    for (auto it : it_destory_vec)
-    {
-        _unass_size -= it->second.length();
-        _window.erase(it);
+
+    if ((it->first >= begin && it_end < end) ||
+        (it->first > begin && it_end <= end)) {
+      it_destory_vec.push_back(it);
+    } else if (it->first < begin && it_end > begin && it_end < end) {
+      merge_data = it->second.substr(0, begin - it->first) + merge_data;
+      begin = it->first;
+      it_destory_vec.push_back(it);
+    } else if (it->first > begin && it->first < end && it_end > end) {
+      merge_data = merge_data.substr(0, it->first - begin) + it->second;
+      it_destory_vec.push_back(it);
+      break;
     }
-    _window[begin] = merge_data;
-    _unass_size += merge_data.length();
+  }
+  for (auto it : it_destory_vec) {
+    _unass_size -= it->second.length();
+    _window.erase(it);
+  }
+  _window[begin] = merge_data;
+  _unass_size += merge_data.length();
 }
 
 // 只有当_unass_base处存在windows中时才会重组
-void StreamReassembler::reassemble_stream()
-{
-    auto it = _window.begin();
-    while (!_window.empty() && it != _window.end() && it->first == _unass_base)
-    {
-        size_t writed_len = _output.write(it->second);
-        _unass_base += writed_len;
-        _unass_size -= writed_len;
-        it = _window.erase(it);
-    }
+void StreamReassembler::reassemble_stream() {
+  auto it = _window.begin();
+  while (!_window.empty() && it != _window.end() && it->first == _unass_base) {
+    size_t writed_len = _output.write(it->second);
+    _unass_base += writed_len;
+    _unass_size -= writed_len;
+    it = _window.erase(it);
+  }
 }
 
 //! \details This function accepts a substring (aka a segment) of bytes,
 //! possibly out-of-order, from the logical stream, and assembles any newly
 //! contiguous substrings and writes them into the output stream in order.
 
-void StreamReassembler::push_substring(const string &data, const size_t index, const bool eof)
-{
-    if (eof)
-    {
-        _eof = true;
-        _eof_idx = index + data.length();
-    }
-    size_t len = data.length();
+void StreamReassembler::push_substring(const string &data, const size_t index,
+                                       const bool eof) {
+  if (eof) {
+    _eof = true;
+    _eof_idx = index + data.length();
+  }
+  size_t len = data.length();
 
-    if (index >= _unass_base + _output.remaining_capacity()) // 越界
-        return;
+  if (index >= _unass_base + _output.remaining_capacity()) // 越界
+    return;
 
-    if (index >= _unass_base)
-    {
-        size_t buf_offset = index - _unass_base;
-        // 待写入的数据不能超过窗口范围
-        size_t real_len = min(len, _output.remaining_capacity() - buf_offset);
-        insert_merge(index, data.substr(0, real_len));
-    }
-    else if (index + len > _unass_base)
-    { // index < _unass_base
-        size_t str_offset = _unass_base - index;
-        // 待写入的数据不能超过窗口范围
-        size_t real_len = min(len - str_offset, _output.remaining_capacity());
-        insert_merge(_unass_base, data.substr(str_offset, real_len));
-    } // else index+len <= _unass_base
-    reassemble_stream();
-    if (_eof && _eof_idx <= _unass_base)
-    {
-        _output.end_input();
-    }
+  if (index >= _unass_base) {
+    size_t buf_offset = index - _unass_base;
+    // 待写入的数据不能超过窗口范围
+    size_t real_len = min(len, _output.remaining_capacity() - buf_offset);
+    insert_merge(index, data.substr(0, real_len));
+  } else if (index + len > _unass_base) { // index < _unass_base
+    size_t str_offset = _unass_base - index;
+    // 待写入的数据不能超过窗口范围
+    size_t real_len = min(len - str_offset, _output.remaining_capacity());
+    insert_merge(_unass_base, data.substr(str_offset, real_len));
+  } // else index+len <= _unass_base
+  reassemble_stream();
+  if (_eof && _eof_idx <= _unass_base) {
+    _output.end_input();
+  }
 }
 
 size_t StreamReassembler::unassembled_bytes() const { return _unass_size; }
 
 size_t StreamReassembler::assembled_bytes() const { return _unass_base; }
+
+size_t StreamReassembler::windows_size() const {
+  return _output.remaining_capacity();
+}
 
 bool StreamReassembler::empty() const { return _unass_size == 0; }

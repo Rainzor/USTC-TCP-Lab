@@ -88,5 +88,5 @@ optional<WrappingInt32> TCPReceiver::ackno() const
 
 size_t TCPReceiver::window_size() const
 {
-    return _reassembler.stream_out().remaining_capacity();
+    return _reassembler.windows_size();
 }

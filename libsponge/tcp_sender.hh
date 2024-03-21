@@ -8,7 +8,7 @@
 
 #include <functional>
 #include <queue>
-
+#include <map>
 //! \brief The "sender" part of a TCP implementation.
 
 //! Accepts a ByteStream, divides it up into segments and sends the
@@ -17,6 +17,19 @@
 //! segments if the retransmission timer expires.
 class TCPSender {
   private:
+
+    int _timeout = -1;
+    int _timecount = 0;
+
+    //未被组装但已被发送的数据,管理实际发出的字节流
+    size_t _out_bytes = 0;
+    std::deque<TCPSegment> _segments_inflight{};
+
+    size_t _last_windows_size = 0;
+    bool is_syn = false;
+    bool is_fin = false;
+    size_t _retransmissions_count = 0;
+
     //! our initial sequence number, the number for our SYN.
     WrappingInt32 _isn;
 
