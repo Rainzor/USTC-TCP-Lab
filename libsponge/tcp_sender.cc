@@ -28,7 +28,7 @@ uint64_t TCPSender::bytes_in_flight() const { return _out_bytes; }
 //填满远程的窗口
 void TCPSender::fill_window() {
     //当远程window size=0时，任然视作1，防止sender中断
-    size_t cur_win_sz = _last_windows_size ? _last_windows_size : 1;
+    size_t cur_win_sz = _last_win_sz ? _last_win_sz : 1;
 
     //尽可能的填充窗口
     while( cur_win_sz > bytes_in_flight()){
@@ -96,8 +96,8 @@ void TCPSender::fill_window() {
 //! \param window_size The remote receiver's advertised window size
 //! \returns `false` if the ackno appears invalid (acknowledges something the TCPSender hasn't sent yet)
 bool TCPSender::ack_received(const WrappingInt32 ackno, const uint16_t window_size) {
-    size_t abs_sqe = unwrap(ackno, _isn, _next_seqno);
-    if(abs_sqe > _next_seqno){//非法的ack
+    size_t abs_ack_no = unwrap(ackno, _isn, _next_seqno);
+    if(abs_ack_no > _next_seqno){//非法的ack
         return false;
     }
     //处理 bytes in flight
@@ -105,7 +105,7 @@ bool TCPSender::ack_received(const WrappingInt32 ackno, const uint16_t window_si
         auto &seg = _segments_inflight.front();
         size_t seg_len = seg.length_in_sequence_space();
         uint64_t abs_sqe_no = unwrap(seg.header().seqno, _isn, _next_seqno);
-        if(abs_sqe_no + seg_len <= abs_sqe){
+        if(abs_sqe_no + seg_len <= abs_ack_no){
             _segments_inflight.pop_front();
             _out_bytes -= seg_len;
             _timeout = _initial_retransmission_timeout;
@@ -118,7 +118,7 @@ bool TCPSender::ack_received(const WrappingInt32 ackno, const uint16_t window_si
     _retransmissions_count = 0;
     
     //更新窗口大小,传输新的数据
-    _last_windows_size = window_size;
+    _last_win_sz = window_size;
     fill_window();
     return true;
 }
