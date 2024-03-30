@@ -25,7 +25,7 @@ class TCPSender {
     size_t _out_bytes = 0;
     std::deque<TCPSegment> _segments_inflight{};
 
-    size_t _last_win_sz = 0;
+    size_t _last_windows_size = 0;
     bool is_syn = false;
     bool is_fin = false;
     size_t _retransmissions_count = 0;

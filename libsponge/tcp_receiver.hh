@@ -68,6 +68,8 @@ public:
 
     //! \brief number of bytes stored but not yet reassembled
     size_t unassembled_bytes() const { return _reassembler.unassembled_bytes(); }
+    size_t assembled_bytes() const { return _reassembler.assembled_bytes(); }
+    WrappingInt32 isn() const { return _isn; }
 
     //! \brief handle an inbound segment
     //! \returns `true` if any part of the segment was inside the window
