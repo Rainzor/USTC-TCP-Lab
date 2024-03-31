@@ -48,15 +48,14 @@ void TCPConnection::segment_received(const TCPSegment &seg) {
 
     // 用seg的实际长度+SYN+FIN判断是否需要发送ACK
     // 如果接受到的是空包（ACK包）则不用发送，即没有ACK_ACK
-    bool is_send_ack = seg.length_in_sequence_space();
+    bool is_send_empty = seg.length_in_sequence_space();
+    bool is_ack_received = true;
     // 如果接受的包含有ACK，发送器需要处理字段
     if(seg.header().ack){//除了SYN包，其他包都会有ACK字段
         //判断接收到的ack是否合法,并更新发送器内部信息，组装数据包，填充窗口
-        bool is_ack_received =  _sender.ack_received(seg.header().ackno, seg.header().win);
+        is_ack_received =  _sender.ack_received(seg.header().ackno, seg.header().win);
         // 如果_sender.segments_out()不为空，说明有数据需要发送,则不需要发送空的ACK包
-        is_send_ack &= _sender.segments_out().empty();
-        // 如果遇到了非法了seg.ackno，需要重传一个空包
-        is_send_ack |= ackno.has_value()&&!is_ack_received;
+        is_send_empty &= _sender.segments_out().empty();
     }
     
     // 接收器处于SYN_RECV状态，发送器处于CLOSED状态
@@ -83,16 +82,18 @@ void TCPConnection::segment_received(const TCPSegment &seg) {
         return;
     }
     
-    // Keep-alive 判断
-    if (ackno.has_value()){
+    if (ackno.has_value()){   
         const TCPHeader &seg_header = seg.header();
-        is_send_ack |=  (seg.length_in_sequence_space() == 0)&& (seg_header.seqno == ackno.value() - 1);
-        
+        // Keep-alive 判断
+        is_send_empty |=  (seg.length_in_sequence_space() == 0)&& (seg_header.seqno == ackno.value() - 1);
+        // 非法seg.seqno
         uint64_t abs_receviver_ack = _receiver.assembled_bytes()+1;
         uint64_t abs_seg_seqno = unwrap(seg_header.seqno, _receiver.isn(), abs_receviver_ack);
-        is_send_ack |=  _receiver.window_size()&&(abs_seg_seqno >= abs_receviver_ack + _receiver.window_size());
+        is_send_empty |=  _receiver.window_size()&&(abs_seg_seqno >= abs_receviver_ack + _receiver.window_size());
+        // 非法seg.ackno
+        is_send_empty |= seg.header().ack&& !is_ack_received;
     }
-    if(is_send_ack){//确实需要回复ack，sender添加空的ACK包
+    if(is_send_empty){//确实需要回复ack，sender添加空的ACK包
         _sender.send_empty_segment();
     }
     _trans_segments_to_out_with_ack_and_win();
