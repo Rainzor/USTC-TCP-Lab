@@ -1,7 +1,6 @@
 #ifndef SPONGE_LIBSPONGE_BUFFER_HH
 #define SPONGE_LIBSPONGE_BUFFER_HH
 
-#include <stdexcept>
 #include <algorithm>
 #include <deque>
 #include <memory>
