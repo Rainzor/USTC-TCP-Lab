@@ -5,7 +5,7 @@
 
 #include <optional>
 #include <queue>
-
+#include "radix.hh"
 //! \brief A wrapper for NetworkInterface that makes the host-side
 //! interface asynchronous: instead of returning received datagrams
 //! immediately (from the `recv_frame` method), it stores them for
@@ -49,6 +49,8 @@ class Router {
     //! datagram's destination address.
     void route_one_datagram(InternetDatagram &dgram);
 
+  private:
+    RadixTree _radixTree{};
   public:
     //! Add an interface to the router
     //! \param[in] interface an already-constructed network interface
