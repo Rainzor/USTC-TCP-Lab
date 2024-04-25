@@ -20,8 +20,9 @@ private:
     enum State
     {
         LISTEN,
-        SYN_RECV,
-        FIN_RECV,
+        SYN_RCVD,
+        CLOSING,
+        CLOSED,
         ERROR
     };
     State _state = LISTEN;
